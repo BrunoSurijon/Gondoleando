@@ -290,6 +290,10 @@ app.get('/api/sucursales-cercanas', async (req, res) => {
   }
 });
 
+app.get('/', (req, res) => {
+  res.send('🟢 API de Gondoleando funcionando correctamente');
+});
+
 app.listen(PORT, () => {
   console.log(`🚀 Servidor backend corriendo en http://localhost:${PORT}`);
 });

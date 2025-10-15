@@ -51,8 +51,6 @@ h1 {
 
 
 
-
-
 /*HEADER*/
 .header {
   width: 100%;
@@ -87,7 +85,6 @@ h1 {
 .perfil-movil {
   display: none;
 }
-/* Menú navegación */
 .nav-list {
   display: flex;
   gap: 36px;
@@ -120,7 +117,6 @@ h1 {
   align-items: center;
   gap: 12px;
 }
-/* Íconos usuario */
 .iconos-usuario {
   display: flex;
   align-items: center;
@@ -184,129 +180,7 @@ h1 {
 .hamburger {
   display: none;
 }
-@media (max-width: 768px) {
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: white; 
-    padding: 25px 25px; 
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  }
-  .hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 40px;
-    height: 30px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    margin-right: auto;
-  }
-  .hamburger .bar {
-    height: 3px;
-    width: 100%;
-    background-color: #112d55;
-    border-radius: 2px;
-    transition: 0.3s ease;
-  }
-  .logo-img-header {
-    display: none;
-  }
-  .logo-header {
-    position: absolute;
-    margin-top: 5px;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 16px;
-    box-sizing: border-box;
-  }
-  .logo-img-header-celu {
-    display: block;
-    width: 105px;
-    height: auto;
-  }
-  .perfil-movil {
-    display: block;
-    margin-left: auto;
-  }
-  .perfil-movil img {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  .header nav {
-    display: none;
-    position: absolute;
-    top: 60px;
-    left: 15px;
-    width: 250px;
-    background-color: #ededed;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  }
-  .header nav.abierto {
-    display: block;
-  }
-  .nav-list {
-    flex-direction: column;
-    padding: 10px 0;
-    gap: 0;
-    align-items: flex-start;
-  }
-  .nav-list li {
-    padding: 12px 0 12px 15px;
-    text-align: left;
-    width: 100%;
-    margin-top: 12px;
-  }
-  .nav-list li a {
-    width: 100%;
-    text-align: left;
-    display: flex;             
-    align-items: center;       
-  }
-  .nav-list li:last-child {
-    border-bottom: none;
-  }
-  .iconos-usuario {
-    display: none;
-  }
-  .boton-cerrar-header {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    cursor: pointer;
-    z-index: 1001;
-  }
-  .solo-mobile {
-    display: block;
-  }
-  .logout-mobile-link {
-    font-size: 1.15rem;
-    font-weight: 500;
-    color: #112d55;
-    text-decoration: none;
-    margin-top: 18px;
-  }
-  .logout-mobile-link:hover {
-    color: #0d213e;
-  }
-}
+
 
 
 
@@ -343,17 +217,17 @@ h1 {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(17, 45, 85, 0.85); /* azul con opacidad */
+  background-color: rgba(17, 45, 85, 0.85); 
   color: white;
   font-size: 1rem;
   font-weight: bold;
   padding: 1.2rem 1.2rem;
   text-align: center;
-  backdrop-filter: blur(1px); /* opcional: suaviza fondo */
+  backdrop-filter: blur(1px); 
 }
 .buscador {
   width: 100%;
-  max-width: 600px; /* Aumenta este valor */
+  max-width: 600px; 
   height: 42px;
   padding: 10px 40px 10px 15px;
   font-size: 1rem;
@@ -723,103 +597,7 @@ button:disabled {
   color: white;
 }
 
-@media (max-width: 768px) {
-  .contenedor-inicio{
-    padding-top: 120px;
-  }
-  .imagenes-acceso {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .card-acceso {
-    width: 100%;
-    height: auto;
-  }
-  .card-acceso img {
-    height: 180px;
-    object-fit: cover;
-    width: 100%;
-  }
-  .card-acceso span {
-    display: block;
-    text-align: center;
-    font-size: 1rem;
-    padding: 0.5rem 0;
-  }
-  .icono-input,
-  .cerrar {
-    right: 12px;
-    width: 20px;
-    height: 20px;
-  }
-  .buscador-filtrado-contenedor {
-    flex-direction: column;
-    padding: 0 1rem;
-  }
-  .filtros-icono-contenedor-alt {
-    margin: 1rem auto 0 auto;
-  }
-  .filtros-menu-alt {
-    width: 100%;
-  }
- .productos-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 0 1rem;
-  }
-  .producto-card {
-    display: flex;
-    flex-direction: column;
-    border: 2px solid #0d2d62;
-    border-radius: 12px;
-    padding: 1rem;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-  }
-  .producto-card img.producto-img {
-    max-width: 100px;
-    margin: 0 auto;
-    margin-bottom: 0.5rem;
-  }
-  .producto-card p {
-    font-size: 1rem;
-    text-align: center;
-    margin-bottom: 0.3rem;
-  }
-  .producto-card h3 {
-    font-size: 1.2rem;
-    color: #0d2d62;
-    text-align: center;
-    margin-bottom: 0.5rem;
-  }
-  .logo-boton-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .logo-img {
-    width: 40px;
-    height: auto;
-  }
-  .agregarListaInicio {
-    background-color: #0d2d62;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    border: none;
-    font-size: 0.9rem;
-    font-weight: bold;
-  }
-  .producto-a-agregar {
-    justify-content: center;
-    align-items: center;
-  }
-  h2{
-    font-size: 1.2rem;
-  }
-}
+
 
 
 /*SUCURSALES*/
@@ -970,79 +748,8 @@ button:disabled {
 
 
 
-@media (max-width: 768px) {
-  .leaflet-control-zoom {
-    display: none !important;
-  }
-  .contenedor-sucursales{
-    padding-top: 130px;
-  }
 
-  .sucursales-grid {
-    display: flex;           
-    overflow-x: auto;        
-    gap: 1rem;
-    padding-left: 1rem;
-    margin-top: 1rem;
-    scroll-snap-type: x mandatory; 
-  }
-
-  .sucursal-card {
-    min-width: 260px;        
-    flex: 0 0 auto;          
-    scroll-snap-align: start;
-    margin-bottom: 0;        
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-  }
-
-  .sucursal-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.5rem;
-  }
-
-  .sucursal-nombre {
-    font-size: 1.1rem;
-  }
-
-  .sucursal-info {
-    justify-content: flex-start; 
-    gap: 0.8rem;
-  }
-
-  .sucursal-direccion,
-  .sucursal-distancia {
-    font-size: 0.85rem;
-  }
-
-  .icono-atributo {
-    width: 20px;
-    height: 20px;
-  }
-  .sucursales-filtro-logos {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    justify-items: center;
-  }
-
-  .logo-container {
-    width: 100%;
-    margin: 0;
-    padding: 10px;
-  }
-
-  .ver-sucursales-btn {
-    font-size: 0.85rem;
-    padding: 8px;
-  }
-}
-
-
-
-/* Paginación */
+/* PAGINACION */
 .paginacion {
   display: flex;
   justify-content: center;
@@ -1093,7 +800,7 @@ button:disabled {
 
 
 
-/* Login */
+/* LOGIN */
 .login-page {
   min-height: 100vh;
   display: flex;
@@ -1179,16 +886,11 @@ button:disabled {
   margin-top: 1rem;
   text-align: center;
 }
-@media (max-width: 768px) {
-  .login-page {
-    padding-top: 15px; 
-    align-items: flex-start; 
-  }
-}
 
 
 
-/* Registro */
+
+/* REGISTRO */
 .register-page {
   min-height: 100vh;
   display: flex;
@@ -1260,12 +962,6 @@ button:disabled {
   text-align: center;
 }
 
-@media (max-width: 768px) {
-  .register-page {
-    padding-top: 15px;
-    align-items: flex-start;
-  }
-}
 
 
 
@@ -1358,22 +1054,7 @@ button:disabled {
   color: #112d55;
 }
 
-@media (max-width: 768px) {
-  .contenedor-categorias{
-    padding-top: 130px;
-  }
-  .grid-categorias {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 50px 80px;
-    justify-content: center;
-    align-items: center;
-  }
 
-  .titulo-categorias {
-    font-size: 20px;
-    margin-bottom: 40px;
-  }
-}
 
 
 /*SUPERMERCADOS*/
@@ -1420,35 +1101,8 @@ button:disabled {
 }
 
 
-@media (max-width: 768px) {
-  .contenedor-supermercados {
-    padding-top: 130px;
-    padding-bottom: 30px;
-    max-width: 420px;       /* ancho fijo estilo celular */
-    margin: 0 auto;         /* centrado horizontal */
-  }
 
-  .grid-supermercados {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en mobile */
-    gap: 50px 40px;
-    justify-items: center; /* centra los ítems en cada celda */
-  }
-
-  .titulo-super {
-    font-size: 20px;
-    margin-bottom: 40px;
-  }
-
-  .card-super {
-    width: 100%;
-    max-width: 150px; /* opcional: limita tamaño individual */
-  }
-}
-
-
-
-
-/* Footer */
+/* FOOTER */
 .footer {
   background-color: #f8f8f8;
   padding: 1rem;
@@ -1456,9 +1110,355 @@ button:disabled {
   text-align: center;
 }
 
+
+
+
+/*CELULAR*/
+
 @media (max-width: 768px) {
+  
+  /*HEADER*/
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: white; 
+    padding: 25px 25px; 
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40px;
+    height: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-right: auto;
+  }
+  .hamburger .bar {
+    height: 3px;
+    width: 100%;
+    background-color: #112d55;
+    border-radius: 2px;
+    transition: 0.3s ease;
+  }
+  .logo-img-header {
+    display: none;
+  }
+  .logo-header {
+    position: absolute;
+    margin-top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+  .logo-img-header-celu {
+    display: block;
+    width: 105px;
+    height: auto;
+  }
+  .perfil-movil {
+    display: block;
+    margin-left: auto;
+  }
+  .perfil-movil img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .header nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 15px;
+    width: 250px;
+    background-color: #ededed;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  .header nav.abierto {
+    display: block;
+  }
+  .nav-list {
+    flex-direction: column;
+    padding: 10px 0;
+    gap: 0;
+    align-items: flex-start;
+  }
+  .nav-list li {
+    padding: 12px 0 12px 15px;
+    text-align: left;
+    width: 100%;
+    margin-top: 12px;
+  }
+  .nav-list li a {
+    width: 100%;
+    text-align: left;
+    display: flex;             
+    align-items: center;       
+  }
+  .nav-list li:last-child {
+    border-bottom: none;
+  }
+  .iconos-usuario {
+    display: none;
+  }
+  .boton-cerrar-header {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  .solo-mobile {
+    display: block;
+  }
+  .logout-mobile-link {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #112d55;
+    text-decoration: none;
+    margin-top: 18px;
+  }
+  .logout-mobile-link:hover {
+    color: #0d213e;
+  }
+
+
+  /*INICIO*/
+  .contenedor-inicio{
+    padding-top: 120px;
+  }
+  .imagenes-acceso {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .card-acceso {
+    width: 100%;
+    height: auto;
+  }
+  .card-acceso img {
+    height: 180px;
+    object-fit: cover;
+    width: 100%;
+  }
+  .card-acceso span {
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+  }
+  .icono-input,
+  .cerrar {
+    right: 12px;
+    width: 20px;
+    height: 20px;
+  }
+  .buscador-filtrado-contenedor {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+  .filtros-icono-contenedor-alt {
+    margin: 1rem auto 0 auto;
+  }
+  .filtros-menu-alt {
+    width: 100%;
+  }
+ .productos-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  .producto-card {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #0d2d62;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  .producto-card img.producto-img {
+    max-width: 100px;
+    margin: 0 auto;
+    margin-bottom: 0.5rem;
+  }
+  .producto-card p {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 0.3rem;
+  }
+  .producto-card h3 {
+    font-size: 1.2rem;
+    color: #0d2d62;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  .logo-boton-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo-img {
+    width: 40px;
+    height: auto;
+  }
+  .agregarListaInicio {
+    background-color: #0d2d62;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+  .producto-a-agregar {
+    justify-content: center;
+    align-items: center;
+  }
+  h2{
+    font-size: 1.2rem;
+  }
+
+
+  /*SUCURSALES*/
+  .leaflet-control-zoom {
+    display: none !important;
+  }
+  .contenedor-sucursales{
+    padding-top: 130px;
+  }
+  .sucursales-grid {
+    display: flex;           
+    overflow-x: auto;        
+    gap: 1rem;
+    padding-left: 1rem;
+    margin-top: 1rem;
+    scroll-snap-type: x mandatory; 
+  }
+  .sucursal-card {
+    min-width: 260px;        
+    flex: 0 0 auto;          
+    scroll-snap-align: start;
+    margin-bottom: 0;        
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+  .sucursal-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+  }
+  .sucursal-nombre {
+    font-size: 1.1rem;
+  }
+  .sucursal-info {
+    justify-content: flex-start; 
+    gap: 0.8rem;
+  }
+  .sucursal-direccion,
+  .sucursal-distancia {
+    font-size: 0.85rem;
+  }
+  .icono-atributo {
+    width: 20px;
+    height: 20px;
+  }
+  .sucursales-filtro-logos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    justify-items: center;
+  }
+  .logo-container {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+  }
+  .ver-sucursales-btn {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+
+
+  /*LOGIN*/
+  .login-page {
+    padding-top: 15px; 
+    align-items: flex-start; 
+  }
+
+
+  /*REGISTER*/
+  .register-page {
+    padding-top: 15px;
+    align-items: flex-start;
+  }
+
+
+  /*CATEGORIAS*/
+  .contenedor-categorias{
+    padding-top: 130px;
+  }
+  .grid-categorias {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px 80px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .titulo-categorias {
+    font-size: 20px;
+    margin-bottom: 40px;
+  }
+
+
+  /*SUPERMERCADOS*/
+  .contenedor-supermercados {
+    padding-top: 130px;
+    padding-bottom: 30px;
+    max-width: 420px;       
+    margin: 0 auto;         
+  }
+  .grid-supermercados {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 50px 40px;
+    justify-items: center; 
+  }
+  .titulo-super {
+    font-size: 20px;
+    margin-bottom: 40px;
+  }
+  .card-super {
+    width: 100%;
+    max-width: 150px; 
+  }
+
+
+
+  /*FOOTER*/
   .footer {
     font-size: 14px;
     padding: 1rem 0.5rem;
   }
 }
+
+  

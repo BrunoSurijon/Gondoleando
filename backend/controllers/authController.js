@@ -8,11 +8,18 @@ export async function registrar(req, res) {
   const { nombreApellido, email, password } = req.body;
 
   try {
+    // Validación de nombre y apellido vacío o solo espacios
+    if (!nombreApellido || nombreApellido.trim() === "") {
+      return res.status(400).json({ mensaje: 'El nombre y apellido son obligatorios.' });
+    }
+
     const existeUsuario = await Usuario.findOne({ email });
-    if (existeUsuario) return res.status(400).json({ mensaje: 'Ya existe ese email' });
+    if (existeUsuario) {
+      return res.status(400).json({ mensaje: 'Ya existe ese email' });
+    }
 
     const hash = await bcrypt.hash(password, 10);
-    const nuevoUsuario = new Usuario({ nombreApellido, email, password: hash });
+    const nuevoUsuario = new Usuario({ nombreApellido: nombreApellido.trim(), email, password: hash });
     await nuevoUsuario.save();
 
     res.status(201).json({ mensaje: 'Usuario creado' });
@@ -21,6 +28,7 @@ export async function registrar(req, res) {
     res.status(500).json({ mensaje: 'Error al registrar' });
   }
 }
+
 
 export async function login(req, res) {
   const { email, password } = req.body;

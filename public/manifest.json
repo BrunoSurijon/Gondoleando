@@ -1,0 +1,24 @@
+{
+  "id": "/",
+  "name": "Gondoleando",
+  "short_name": "Gondoleando",
+  "description": "Gondoleando te ayuda a comparar precios de supermercados, armar listas inteligentes y ahorrar dinero.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#112D55",
+  "orientation": "portrait",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

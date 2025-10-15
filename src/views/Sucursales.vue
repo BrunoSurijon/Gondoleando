@@ -128,12 +128,25 @@ import L from 'leaflet';
 import iconoUbicacion from '@/assets/ubicacionSucursales.png';
 import iconoDistancia from '@/assets/distancia.png';
 
-
 // Importar logos por nombre
 import logoCoto from '@/assets/coto.png';
 import logoDia from '@/assets/dia.png';
 import logoCarrefour from '@/assets/carrefour.png';
 import logoMas from '@/assets/mas.png';
+
+const iconUsuario = L.icon({
+  iconUrl: iconoUbicacion,
+  iconSize: [32, 32],
+  iconAnchor: [16, 32],
+  popupAnchor: [0, -32],
+});
+
+const iconSucursal = L.icon({
+  iconUrl: iconoDistancia,
+  iconSize: [32, 32],
+  iconAnchor: [16, 32],
+  popupAnchor: [0, -32],
+});
 
 export default {
   data() {
@@ -149,7 +162,7 @@ export default {
       iconoUbicacion,
       iconoDistancia,
       supermercadoFiltro: 'todos',
-      esMobil: false
+      esMobil: false,
     };
   },
   computed: {
@@ -163,31 +176,36 @@ export default {
     mostrarSucursales() {
       return this.esMobil
         ? this.sucursalesFiltradas
-        : this.sucursalesFiltradas.slice((this.paginaActual - 1) * this.itemsPorPagina, this.paginaActual * this.itemsPorPagina);
+        : this.sucursalesFiltradas.slice(
+            (this.paginaActual - 1) * this.itemsPorPagina,
+            this.paginaActual * this.itemsPorPagina
+          );
     },
     sucursalesFiltradas() {
       if (this.supermercadoFiltro === 'todos') {
         return this.sucursales;
       }
-      return this.sucursales.filter(sucursal =>
+      return this.sucursales.filter((sucursal) =>
         sucursal.nombre.toLowerCase().includes(this.supermercadoFiltro)
       );
-    }
+    },
   },
   watch: {
     supermercadoFiltro() {
       this.actualizarMarcadoresMapa(); // actualiza el mapa al cambiar el filtro
-    }
+    },
   },
   methods: {
     async obtenerSucursales(lat, lng) {
       try {
-        const res = await fetch(`http://localhost:3001/api/sucursales-cercanas?lat=${lat}&lng=${lng}`);
+        const res = await fetch(
+          `https://gondoleando-backend.onrender.com/api/sucursales-cercanas?lat=${lat}&lng=${lng}`
+        );
         if (!res.ok) throw new Error('Error al cargar sucursales');
         const data = await res.json();
 
         // Agregar logos según nombre
-        const sucursalesConLogo = data.map(sucursal => {
+        const sucursalesConLogo = data.map((sucursal) => {
           let logo = null;
           const nombre = sucursal.nombre.toLowerCase();
           if (nombre.includes('coto')) logo = logoCoto;
@@ -218,30 +236,32 @@ export default {
       this.mapa = L.map('mapa').setView([latUsuario, lngUsuario], 14);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: 'Map data © OpenStreetMap'
+        attribution: 'Map data © OpenStreetMap',
       }).addTo(this.mapa);
 
-      // Marcador del usuario
-      L.marker([latUsuario, lngUsuario], { title: 'Tu ubicación' })
+      // Marcador del usuario con icono personalizado
+      L.marker([latUsuario, lngUsuario], { icon: iconUsuario, title: 'Tu ubicación' })
         .addTo(this.mapa)
         .bindPopup('📍 Tu ubicación')
         .openPopup();
 
-      // Crear grupo de marcadores para poder actualizar después
+      // Crear grupo de marcadores para sucursales
       this.capaMarkers = L.layerGroup().addTo(this.mapa);
 
-      this.actualizarMarcadoresMapa(); // inicial
+      this.actualizarMarcadoresMapa();
     },
     actualizarMarcadoresMapa() {
       if (!this.capaMarkers || !this.ubicacionUsuario) return;
 
       this.capaMarkers.clearLayers();
 
-      this.sucursalesFiltradas.forEach(sucursal => {
+      this.sucursalesFiltradas.forEach((sucursal) => {
         const [lng, lat] = sucursal.ubicacion.coordinates;
-        L.marker([lat, lng], { title: sucursal.nombre })
+        L.marker([lat, lng], { icon: iconSucursal, title: sucursal.nombre })
           .addTo(this.capaMarkers)
-          .bindPopup(`<strong>${sucursal.nombre}</strong><br>${sucursal.direccion}<br>${sucursal.distancia} metros`);
+          .bindPopup(
+            `<strong>${sucursal.nombre}</strong><br>${sucursal.direccion}<br>${sucursal.distancia} metros`
+          );
       });
     },
     cambiarPagina(nuevaPagina) {
@@ -255,7 +275,7 @@ export default {
     },
     checkEsMobil() {
       this.esMobil = window.innerWidth <= 768;
-    }
+    },
   },
   mounted() {
     this.checkEsMobil();
@@ -267,11 +287,11 @@ export default {
       return;
     }
     navigator.geolocation.getCurrentPosition(
-      pos => {
+      (pos) => {
         const { latitude, longitude } = pos.coords;
         this.obtenerSucursales(latitude, longitude);
       },
-      err => {
+      (err) => {
         this.error = 'Error al obtener tu ubicación';
         this.loading = false;
       }
@@ -279,6 +299,6 @@ export default {
   },
   beforeUnmount() {
     window.removeEventListener('resize', this.checkEsMobil);
-  }
+  },
 };
 </script>

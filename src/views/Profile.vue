@@ -72,7 +72,7 @@ onMounted(async () => {
 
   try {
     // Obtener datos del usuario
-    const userRes = await fetch('http://localhost:3001/api/auth/me', {
+    const userRes = await fetch('https://gondoleando-backend.onrender.com/api/auth/me', {
       headers: { Authorization: `Bearer ${token}` }
     });
 
@@ -87,7 +87,7 @@ onMounted(async () => {
     user.value = await userRes.json();
 
     // Obtener datos del perfil
-    const perfilRes = await fetch('http://localhost:3001/api/perfil', {
+    const perfilRes = await fetch('https://gondoleando-backend.onrender.com/api/perfil', {
       headers: { Authorization: `Bearer ${token}` }
     });
 
@@ -106,8 +106,3 @@ onMounted(async () => {
   }
 });
 </script>
-
-
-<style scoped>
-
-</style>

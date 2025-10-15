@@ -4,7 +4,7 @@
     <div v-if="!nombreLista">
       <h2 v-if="Object.keys(todasLasListas).length">Listas creadas</h2>
       <div v-else class="lista-vacia">
-        <img src="@/assets/lista.png" alt="Lista vacía" class="icono-lista-vacia" />
+        <img :src="iconLista" alt="Lista vacía" class="icono-lista-vacia" />
         <p class="mensaje-lista-vacia">Aún no armaste ninguna lista</p>
         <button @click="abrirModalCrear" class="boton-principal">Crear lista de compras</button>
       </div>
@@ -20,20 +20,20 @@
             <p class="cantidad-productos">{{ items.length }} productos</p>
             <div class="acciones-lista">
               <button
-              v-if="items.length > 0"
-              @click.stop="descargarLista(nombre, items)"
-              class="boton-descargar-icono"
-              aria-label="Descargar lista"
-            >
-              <img src="@/assets/descargar.png" alt="Descargar" />
-            </button>
+                v-if="items.length > 0"
+                @click.stop="descargarLista(nombre, items)"
+                class="boton-descargar-icono"
+                aria-label="Descargar lista"
+              >
+                <img :src="iconDescargar" alt="Descargar" />
+              </button>
 
               <button
                 @click.stop="confirmarEliminarLista(nombre)"
                 class="boton-eliminar-icono"
                 aria-label="Eliminar lista"
               >
-                <img src="@/assets/eliminar.png" alt="Eliminar" />
+                <img :src="iconEliminar" alt="Eliminar" />
               </button>
             </div>
           </div>
@@ -54,7 +54,7 @@
             class="btn-eliminar-lista-titulo"
             aria-label="Eliminar lista"
           >
-            <img src="@/assets/eliminar.png" alt="Eliminar" />
+            <img :src="iconEliminar" alt="Eliminar" />
           </button>
         </div>
       </div>
@@ -88,11 +88,12 @@
               <button @click="sumarCantidad(producto)">+</button>
             </div>
             <button class="boton-eliminar-detalle" @click="abrirModalEliminarProducto(index)" aria-label="Eliminar producto">
-              <img src="@/assets/eliminar.png" alt="Eliminar" />
+              <img :src="iconEliminar" alt="Eliminar" />
             </button>
           </div>
         </div>
       </div>
+
       <!-- Lista por supermercado -->
       <div v-if="vista === 'supermercado' && lista.length" class="supermercados-totales">
         <div v-if="vistaSuperLista">
@@ -121,9 +122,8 @@
                   <span>{{ producto.cantidad || 1 }}</span>
                   <button @click="sumarCantidad(producto)">+</button>
                 </div>
-                <!-- Aquí el cambio clave: paso index y flag true -->
                 <button class="boton-eliminar-detalle" @click="abrirModalEliminarProducto(index, true)" aria-label="Eliminar producto">
-                  <img src="@/assets/eliminar.png" alt="Eliminar" />
+                  <img :src="iconEliminar" alt="Eliminar" />
                 </button>
               </div>
             </div>
@@ -136,7 +136,7 @@
             >
               Añadir productos
             </router-link>
-            <button @click="volverAConsolidado" class="boton-principal">
+            <button @click="volverAConsolidado" class="boton-ver-conteo">
               Ver conteo general
             </button>
           </div>
@@ -173,29 +173,29 @@
       </div>
 
       <!-- SIN productos: imagen + texto -->
-        <div v-if="!lista.length && vista === 'producto'" class="lista-vacia">
-          <img src="@/assets/lista.png" alt="Lista vacía" class="icono-lista-vacia" />
-          <p class="mensaje-lista-vacia">Aún no hay productos</p>
-        </div>
+      <div v-if="!lista.length && vista === 'producto'" class="lista-vacia">
+        <img :src="iconLista" alt="Lista vacía" class="icono-lista-vacia" />
+        <p class="mensaje-lista-vacia">Aún no hay productos</p>
+      </div>
 
-        <!-- Total + botón vaciar + botón añadir -->
-        <div v-if="vista === 'producto'" class="total-acciones-contenedor">
-          <div v-if="lista.length" class="total-box">Total: ${{ total }}</div>
-          <div v-if="lista.length" class="total-box clickable" @click="vaciarLista">Vaciar lista</div>
+      <!-- Total + botón vaciar + botón añadir -->
+      <div v-if="vista === 'producto'" class="total-acciones-contenedor">
+        <div v-if="lista.length" class="total-box">Total: ${{ total }}</div>
+        <div v-if="lista.length" class="total-box clickable" @click="vaciarLista">Vaciar lista</div>
 
-          <router-link
-            :to="{ path: '/', query: { lista: nombreLista } }"
-            class="boton-principal btn-anadir-productos"
-          >
-            Añadir productos
-          </router-link>
-        </div>
-        </div>
+        <router-link
+          :to="{ path: '/', query: { lista: nombreLista } }"
+          class="boton-principal btn-anadir-productos"
+        >
+          Añadir productos
+        </router-link>
+      </div>
+    </div>
 
     <!-- MODALES -->
     <div v-if="modalCrearVisible" class="modal-backdrop" @click.self="cerrarModalCrear">
       <div class="modal">
-        <img src="@/assets/cerrar.png" alt="Cerrar modal" class="cerrar-icono" @click="cerrarModalCrear" />
+        <img :src="iconCerrar" alt="Cerrar modal" class="cerrar-icono" @click="cerrarModalCrear" />
         <h2 class="modal-titulo">Ingresar nombre de la lista</h2>
         <div class="nueva-lista">
           <input
@@ -237,7 +237,19 @@
   </div>
 </template>
 
+
 <script>
+// Importar logos
+const logoCoto = new URL('@/assets/coto.png', import.meta.url).href;
+const logoDia = new URL('@/assets/dia.png', import.meta.url).href;
+const logoCarrefour = new URL('@/assets/carrefour.png', import.meta.url).href;
+const logoMas = new URL('@/assets/mas.png', import.meta.url).href;
+
+const iconEliminar = new URL('@/assets/eliminar.png', import.meta.url).href;
+const iconDescargar = new URL('@/assets/descargar.png', import.meta.url).href;
+const iconLista = new URL('@/assets/lista.png', import.meta.url).href;
+const iconCerrar = new URL('@/assets/cerrar.png', import.meta.url).href;
+
 export default {
   name: "ListaDeCompras",
   data() {
@@ -260,6 +272,15 @@ export default {
       vistaSuperLista: false,
       superLista: [],
       supermercadoSeleccionado: "",
+      // logos corregidos
+      logoCoto,
+      logoDia,
+      logoCarrefour,
+      logoMas,
+      iconEliminar,
+      iconDescargar,
+      iconLista,
+      iconCerrar,
     };
   },
   computed: {
@@ -410,7 +431,7 @@ export default {
       const token = localStorage.getItem("token");
       if (!token || !this.nombreLista || !this.lista.length) return;
       try {
-        const res = await fetch("http://localhost:3001/api/listas", {
+        const res = await fetch("https://gondoleando-backend.onrender.com/api/listas", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -508,7 +529,7 @@ export default {
         localStorage.setItem("listasDeComprasPorUsuario", JSON.stringify(listasPorUsuario));
       }
       try {
-        await fetch(`http://localhost:3001/api/listas/${encodeURIComponent(listaABorrar)}`, {
+        await fetch(`https://gondoleando-backend.onrender.com/api/listas/${encodeURIComponent(listaABorrar)}`, {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -535,77 +556,124 @@ export default {
       this.supermercadoSeleccionado = "";
       this.supermercadoAbierto = null;
     },
-    descargarLista(nombre, items) {
-      if (!items.length) return;
+    async descargarLista(nombre, items) {
+  if (!items.length) return;
 
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
 
-      const marginLeft = 15;
-      let verticalOffset = 30;
+  const marginLeft = 15;
+  let verticalOffset = 10; // menos margen arriba para el logo
+  const pageWidth = doc.internal.pageSize.getWidth();
 
-      doc.setFontSize(22);
-      doc.setTextColor("#112D55");
-      doc.setFont("poppins", "bold");
-      const pageWidth = doc.internal.pageSize.getWidth();
-      const textWidth = doc.getTextWidth("Gondoleando");
-      doc.text("Gondoleando", (pageWidth - textWidth) / 2, verticalOffset);
+  // Cargar logo y dimensiones originales
+  const logoData = await this.obtenerLogoBase64();
+  const logoWidth = 35;
+  const logoHeight = logoWidth * (logoData.height / logoData.width);
 
-      verticalOffset += 15;
-      doc.setFontSize(14);
-      doc.setFont("poppins", "bold");
-      doc.setTextColor("#112D55");
-      doc.text(`${nombre}`, marginLeft, verticalOffset);
+  // Logo centrado y más arriba
+  doc.addImage(logoData.base64, 'PNG', (pageWidth - logoWidth) / 2, verticalOffset, logoWidth, logoHeight);
 
-      verticalOffset += 12;
-      doc.setFontSize(11);
-      doc.setFont("poppins", "normal");
+  verticalOffset += logoHeight + 15;
 
-      items.forEach((item, i) => {
-        const cantidad = item.cantidad || 1;
-        const precioUnitario = parseFloat(this.parsearPrecio(item.precio));
-        const totalItem = (precioUnitario * cantidad).toFixed(2);
-        const supermercado = item.supermercado ? `${item.supermercado}` : "";
+  // Nombre lista (subtítulo)
+  doc.setFontSize(18);
+  doc.setTextColor("#112D55");
+  doc.setFont("poppins", "bold");
+  doc.text(nombre, marginLeft, verticalOffset);
 
-        doc.setTextColor("#000");
-        const detalleInicio = `${i + 1}. `;
-        doc.text(detalleInicio, marginLeft, verticalOffset);
+  verticalOffset += 15;
 
-        let offset = marginLeft + doc.getTextWidth(detalleInicio);
+  // Cabecera de tabla
+  doc.setFontSize(11);
+  doc.setFont("poppins", "bold");
+  doc.setTextColor("#112D55");
+  doc.text("N°", marginLeft, verticalOffset);
+  doc.text("Supermercado", marginLeft + 15, verticalOffset);
+  doc.text("Producto", marginLeft + 55, verticalOffset);
+  doc.text("Cant", marginLeft + 120, verticalOffset);
+  doc.text("Precio", marginLeft + 140, verticalOffset);
+  doc.text("Total", marginLeft + 165, verticalOffset);
 
-        doc.setFont("poppins", "bold");
-        doc.setTextColor("#112D55");
-        doc.text(supermercado, offset, verticalOffset);
-        offset += doc.getTextWidth(supermercado + "  ");
+  verticalOffset += 7;
 
-        doc.setFont("poppins", "normal");
-        doc.setTextColor("#000");
-        const nombreProducto = `${item.nombre} - ${cantidad} x `;
-        doc.text(nombreProducto, offset, verticalOffset);
-        offset += doc.getTextWidth(nombreProducto);
+  // Cuerpo de tabla
+  doc.setFont("poppins", "normal");
+  doc.setTextColor("#000");
 
-        doc.setFont("poppins", "bold");
-        doc.setTextColor("#112D55");
-        const precios = `$${precioUnitario.toFixed(2)} = $${totalItem}`;
-        doc.text(precios, offset, verticalOffset);
+  items.forEach((item, i) => {
+    const cantidad = item.cantidad || 1;
+    const precioUnitario = parseFloat(this.parsearPrecio(item.precio));
+    const totalItem = (precioUnitario * cantidad).toFixed(2);
+    const supermercado = item.supermercado || "";
+    const nombreProducto = item.nombre || "";
 
-        verticalOffset += 10;
+    doc.text(`${i + 1}`, marginLeft, verticalOffset);
+    doc.text(supermercado, marginLeft + 15, verticalOffset);
+    doc.text(nombreProducto, marginLeft + 55, verticalOffset);
+    doc.text(`${cantidad}`, marginLeft + 120, verticalOffset);
+    doc.text(`$${precioUnitario.toFixed(2)}`, marginLeft + 140, verticalOffset);
+    doc.text(`$${totalItem}`, marginLeft + 165, verticalOffset);
 
-        if (verticalOffset > 280) {
-          doc.addPage();
-          verticalOffset = 30;
-        }
+    verticalOffset += 7;
+
+    if (verticalOffset > 270) {
+      doc.addPage();
+      verticalOffset = 10;
+    }
+  });
+
+  // Total general más grande
+  verticalOffset += 10;
+  doc.setFontSize(15);
+  doc.setTextColor("#112D55");
+  doc.setFont("poppins", "bold");
+  doc.text(`Total: $${this.calcularTotal(items)}`, marginLeft, verticalOffset);
+
+  doc.save(`${nombre}.pdf`);
+},
+
+
+// Helper para obtener logo base64 y tamaño original
+async obtenerLogoBase64() {
+  const logoUrl = new URL('@/assets/logo.png', import.meta.url).href;
+  const response = await fetch(logoUrl);
+  const blob = await response.blob();
+  const base64 = await this.convertirBlobABase64(blob);
+
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      resolve({
+        base64,
+        width: img.naturalWidth,
+        height: img.naturalHeight,
       });
+    };
+    img.src = base64;
+  });
+},
 
-      verticalOffset += 10;
-      doc.setFontSize(13);
-      doc.setTextColor("#112D55");
-      doc.setFont("poppins", "bold");
-      doc.text(`Total: $${this.calcularTotal(items)}`, marginLeft, verticalOffset);
+// Convierte blob a base64
+convertirBlobABase64(blob) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+},
 
-      doc.save(`${nombre}.pdf`);
+
+    obtenerLogo(supermercadoNombre) {
+      if (!supermercadoNombre) return null;
+      const nombre = supermercadoNombre.toLowerCase();
+      if (nombre.includes('coto')) return this.logoCoto;
+      if (nombre.includes('día') || nombre.includes('dia')) return this.logoDia;
+      if (nombre.includes('carrefour')) return this.logoCarrefour;
+      if (nombre.includes('más') || nombre.includes('mas')) return this.logoMas;
+      return null;
     },
-
   },
   mounted() {
     this.cargarDesdeStorage();
@@ -774,6 +842,19 @@ export default {
   gap: 1rem;
   margin-top: 1.5rem;
 }
+.boton-ver-conteo {
+  background-color: #112d55; 
+  color: white; 
+  padding: 0.8rem 1.6rem; 
+  font-size: 1.17rem; 
+  border-radius: 6px; 
+  border: none; 
+  cursor: pointer; 
+  transition: background-color 0.2s ease; 
+}
+.boton-ver-conteo:hover {
+  background-color: #0d2040; 
+}
 .checkbox-container {
   align-self: flex-end;
   padding-bottom: 0.2rem;
@@ -786,7 +867,7 @@ export default {
   border-radius: 6px;
   padding: 0.2rem 0.6rem;
   background-color: white;
-  height: 28px; /* Ajustar la altura del contenedor */
+  height: 28px; 
   justify-content: center;
   flex: 1;
   max-width: 100px;

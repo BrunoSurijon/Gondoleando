@@ -5,16 +5,16 @@ import Sucursales from '../views/Sucursales.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Profile from '../views/Profile.vue'
-import Supermercados from '../views/Supermercados.vue' // ⬅ nuevo
-import Categorias from '../views/Categorias.vue'       // ⬅ nuevo
+import Supermercados from '../views/Supermercados.vue' 
+import Categorias from '../views/Categorias.vue'       
 
 const routes = [
   { path: '/', name: 'Inicio', component: Inicio, meta: { requiresAuth: true } },
   { path: '/lista', name: 'Lista', component: Lista, meta: { requiresAuth: true } },
   { path: '/sucursales', name: 'Sucursales', component: Sucursales, meta: { requiresAuth: true } },
   { path: '/profile', name: 'Profile', component: Profile, meta: { requiresAuth: true } },
-  { path: '/supermercados', name: 'Supermercados', component: Supermercados, meta: { requiresAuth: true } }, // ⬅
-  { path: '/categorias', name: 'Categorias', component: Categorias, meta: { requiresAuth: true } },           // ⬅
+  { path: '/supermercados', name: 'Supermercados', component: Supermercados, meta: { requiresAuth: true } }, 
+  { path: '/categorias', name: 'Categorias', component: Categorias, meta: { requiresAuth: true } },           
   { path: '/login', name: 'Login', component: Login },
   { path: '/register', name: 'Register', component: Register }
 ]

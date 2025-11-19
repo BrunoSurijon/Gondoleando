@@ -1,6 +1,24 @@
-2025/07/24-22:19:59.876 284c Reusing MANIFEST C:\Users\Colibrí\Desktop\gondoleando - prueba\backend\scrapers\tmp\puppeteer-profile\Default\Session Storage/MANIFEST-000001
-2025/07/24-22:19:59.946 284c Recovering log #3
-2025/07/24-22:19:59.974 284c Reusing old log C:\Users\Colibrí\Desktop\gondoleando - prueba\backend\scrapers\tmp\puppeteer-profile\Default\Session Storage/000003.log 
-2025/07/24-22:52:00.850 284c Level-0 table #5: started
-2025/07/24-22:52:00.992 284c Level-0 table #5: 21671 bytes OK
-2025/07/24-22:52:01.061 284c Delete type=0 #3
+2025/11/17-22:10:31.391 2320 Reusing MANIFEST C:\Users\Colibrí\Desktop\gondoleando\backend\scrapers\tmp\puppeteer-profile\Default\Session Storage/MANIFEST-000001
+2025/11/17-22:10:31.398 2320 Recovering log #7
+2025/11/17-22:10:31.404 2320 Reusing old log C:\Users\Colibrí\Desktop\gondoleando\backend\scrapers\tmp\puppeteer-profile\Default\Session Storage/000007.log 
+2025/11/17-22:19:32.792 2320 Level-0 table #11: started
+2025/11/17-22:19:32.963 2320 Level-0 table #11: 19341 bytes OK
+2025/11/17-22:19:33.056 2320 Delete type=0 #7
+2025/11/17-22:40:32.641 2320 Level-0 table #13: started
+2025/11/17-22:40:32.698 2320 Level-0 table #13: 30084 bytes OK
+2025/11/17-22:40:32.746 2320 Delete type=0 #10
+2025/11/17-22:52:32.628 2320 Level-0 table #15: started
+2025/11/17-22:52:32.701 2320 Level-0 table #15: 30368 bytes OK
+2025/11/17-22:52:32.769 2320 Delete type=0 #12
+2025/11/17-23:02:32.836 2320 Level-0 table #17: started
+2025/11/17-23:02:33.017 2320 Level-0 table #17: 28569 bytes OK
+2025/11/17-23:02:33.118 2320 Delete type=0 #14
+2025/11/17-23:02:33.195 2320 Compacting 4@0 + 1@1 files
+2025/11/17-23:02:33.359 2320 Generated table #18@0: 43 keys, 5655 bytes
+2025/11/17-23:02:33.360 2320 Compacted 4@0 + 1@1 files => 5655 bytes
+2025/11/17-23:02:33.391 2320 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/11/17-23:02:33.413 2320 Delete type=2 #8
+2025/11/17-23:02:33.413 2320 Delete type=2 #11
+2025/11/17-23:02:33.413 2320 Delete type=2 #13
+2025/11/17-23:02:33.413 2320 Delete type=2 #15
+2025/11/17-23:02:33.413 2320 Delete type=2 #17

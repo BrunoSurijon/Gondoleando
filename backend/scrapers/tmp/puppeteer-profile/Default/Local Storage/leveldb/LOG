@@ -1,3 +1,6 @@
-2025/07/24-22:19:59.404 2fb8 Reusing MANIFEST C:\Users\Colibrí\Desktop\gondoleando - prueba\backend\scrapers\tmp\puppeteer-profile\Default\Local Storage\leveldb/MANIFEST-000001
-2025/07/24-22:19:59.512 2fb8 Recovering log #3
-2025/07/24-22:19:59.569 2fb8 Reusing old log C:\Users\Colibrí\Desktop\gondoleando - prueba\backend\scrapers\tmp\puppeteer-profile\Default\Local Storage\leveldb/000003.log 
+2025/11/17-22:10:31.361 1d30 Reusing MANIFEST C:\Users\Colibrí\Desktop\gondoleando\backend\scrapers\tmp\puppeteer-profile\Default\Local Storage\leveldb/MANIFEST-000001
+2025/11/17-22:10:31.391 1d30 Recovering log #3
+2025/11/17-22:10:31.396 1d30 Reusing old log C:\Users\Colibrí\Desktop\gondoleando\backend\scrapers\tmp\puppeteer-profile\Default\Local Storage\leveldb/000003.log 
+2025/11/17-22:41:31.431 1d30 Level-0 table #5: started
+2025/11/17-22:41:31.462 1d30 Level-0 table #5: 9033 bytes OK
+2025/11/17-22:41:31.472 1d30 Delete type=0 #3

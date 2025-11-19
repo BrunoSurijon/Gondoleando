@@ -1,2 +1,6 @@
-2025/07/24-18:50:14.430 fd8 Creating DB C:\Users\Colibrí\Desktop\gondoleando - prueba\backend\scrapers\tmp\puppeteer-profile\Default\Session Storage since it was missing.
-2025/07/24-18:50:14.675 fd8 Reusing MANIFEST C:\Users\Colibrí\Desktop\gondoleando - prueba\backend\scrapers\tmp\puppeteer-profile\Default\Session Storage/MANIFEST-000001
+2025/11/17-21:23:13.974 46e8 Reusing MANIFEST C:\Users\Colibrí\Desktop\gondoleando\backend\scrapers\tmp\puppeteer-profile\Default\Session Storage/MANIFEST-000001
+2025/11/17-21:23:14.082 46e8 Recovering log #4
+2025/11/17-21:23:14.092 46e8 Reusing old log C:\Users\Colibrí\Desktop\gondoleando\backend\scrapers\tmp\puppeteer-profile\Default\Session Storage/000004.log 
+2025/11/17-21:42:21.069 46e8 Level-0 table #8: started
+2025/11/17-21:42:21.133 46e8 Level-0 table #8: 22075 bytes OK
+2025/11/17-21:42:21.164 46e8 Delete type=0 #4
